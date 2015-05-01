@@ -1,4 +1,4 @@
-// mapsort provides functions for sorting maps.
+// Package mapsort provides functions for sorting maps.
 package mapsort
 
 import (
