@@ -2,8 +2,4 @@
 Golang utilities for sorting maps
 
 # Short forms
-Here is a list of short forms used.
-
-| short | full |
-| ----- | ---- |
-| asc | ascending |
+See [short-names](https://www.github.com/BluntSporks/short-names) for a list of abbreviations used.
