@@ -14,45 +14,45 @@ type Pair struct {
 // A slice of Pairs that implements sort.Interface to sort by Key.
 type KeyList []Pair
 
-func (p KeyList) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
-func (p KeyList) Len() int           { return len(p) }
-func (p KeyList) Less(i, j int) bool { return p[i].Key < p[j].Key }
+func (kl KeyList) Swap(i, j int)      { kl[i], kl[j] = kl[j], kl[i] }
+func (kl KeyList) Len() int           { return len(kl) }
+func (kl KeyList) Less(i, j int) bool { return kl[i].Key < kl[j].Key }
 
 // A function to turn a map into a KeyList, then sort and return it.
-func ByKey(m map[string]int, asc bool) KeyList {
-	p := make(KeyList, len(m))
+func ByKey(myMap map[string]int, asc bool) KeyList {
+	kl := make(KeyList, len(myMap))
 	i := 0
-	for k, v := range m {
-		p[i] = Pair{k, v}
+	for key, value := range myMap {
+		kl[i] = Pair{key, value}
 		i++
 	}
 	if asc {
-		sort.Sort(p)
+		sort.Sort(kl)
 	} else {
-		sort.Sort(sort.Reverse(p))
+		sort.Sort(sort.Reverse(kl))
 	}
-	return p
+	return kl
 }
 
 // A slice of Pairs that implements sort.Interface to sort by Value.
 type ValueList []Pair
 
-func (p ValueList) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
-func (p ValueList) Len() int           { return len(p) }
-func (p ValueList) Less(i, j int) bool { return p[i].Value < p[j].Value }
+func (vl ValueList) Swap(i, j int)      { vl[i], vl[j] = vl[j], vl[i] }
+func (vl ValueList) Len() int           { return len(vl) }
+func (vl ValueList) Less(i, j int) bool { return vl[i].Value < vl[j].Value }
 
 // A function to turn a map into a ValueList, then sort and return it.
-func ByValue(m map[string]int, asc bool) ValueList {
-	p := make(ValueList, len(m))
+func ByValue(myMap map[string]int, asc bool) ValueList {
+	vl := make(ValueList, len(myMap))
 	i := 0
-	for k, v := range m {
-		p[i] = Pair{k, v}
+	for key, value := range myMap {
+		vl[i] = Pair{key, value}
 		i++
 	}
 	if asc {
-		sort.Sort(p)
+		sort.Sort(vl)
 	} else {
-		sort.Sort(sort.Reverse(p))
+		sort.Sort(sort.Reverse(vl))
 	}
-	return p
+	return vl
 }
