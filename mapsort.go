@@ -7,8 +7,8 @@ import (
 
 // A data structure to hold a key/value pair.
 type Pair struct {
-	Key   string
-	Value int
+	Key string
+	Val int
 }
 
 // A slice of Pairs that implements sort.Interface to sort by Key.
@@ -22,8 +22,8 @@ func (kl KeyList) Less(i, j int) bool { return kl[i].Key < kl[j].Key }
 func ByKey(myMap map[string]int, asc bool) KeyList {
 	kl := make(KeyList, len(myMap))
 	i := 0
-	for key, value := range myMap {
-		kl[i] = Pair{key, value}
+	for key, val := range myMap {
+		kl[i] = Pair{key, val}
 		i++
 	}
 	if asc {
@@ -34,19 +34,19 @@ func ByKey(myMap map[string]int, asc bool) KeyList {
 	return kl
 }
 
-// A slice of Pairs that implements sort.Interface to sort by Value.
-type ValueList []Pair
+// A slice of Pairs that implements sort.Interface to sort by Val.
+type ValList []Pair
 
-func (vl ValueList) Swap(i, j int)      { vl[i], vl[j] = vl[j], vl[i] }
-func (vl ValueList) Len() int           { return len(vl) }
-func (vl ValueList) Less(i, j int) bool { return vl[i].Value < vl[j].Value }
+func (vl ValList) Swap(i, j int)      { vl[i], vl[j] = vl[j], vl[i] }
+func (vl ValList) Len() int           { return len(vl) }
+func (vl ValList) Less(i, j int) bool { return vl[i].Val < vl[j].Val }
 
-// A function to turn a map into a ValueList, then sort and return it.
-func ByValue(myMap map[string]int, asc bool) ValueList {
-	vl := make(ValueList, len(myMap))
+// A function to turn a map into a ValList, then sort and return it.
+func ByVal(myMap map[string]int, asc bool) ValList {
+	vl := make(ValList, len(myMap))
 	i := 0
-	for key, value := range myMap {
-		vl[i] = Pair{key, value}
+	for key, val := range myMap {
+		vl[i] = Pair{key, val}
 		i++
 	}
 	if asc {
